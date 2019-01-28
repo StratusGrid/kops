@@ -1854,6 +1854,11 @@ func (in *KubeControllerManagerConfig) DeepCopyInto(out *KubeControllerManagerCo
 			(*out)[key] = val
 		}
 	}
+	if in.APIQPS != nil {
+		in, out := &in.APIQPS, &out.APIQPS
+		*out = new(float32)
+		**out = **in
+	}
 	return
 }
 
@@ -1980,6 +1985,11 @@ func (in *KubeSchedulerConfig) DeepCopyInto(out *KubeSchedulerConfig) {
 		for key, val := range *in {
 			(*out)[key] = val
 		}
+	}
+	if in.APIQPS != nil {
+		in, out := &in.APIQPS, &out.APIQPS
+		*out = new(float32)
+		**out = **in
 	}
 	return
 }
@@ -2188,6 +2198,11 @@ func (in *KubeletConfigSpec) DeepCopyInto(out *KubeletConfigSpec) {
 	if in.AuthenticationTokenWebhookCacheTTL != nil {
 		in, out := &in.AuthenticationTokenWebhookCacheTTL, &out.AuthenticationTokenWebhookCacheTTL
 		*out = new(v1.Duration)
+		**out = **in
+	}
+	if in.APIQPS != nil {
+		in, out := &in.APIQPS, &out.APIQPS
+		*out = new(int32)
 		**out = **in
 	}
 	return
